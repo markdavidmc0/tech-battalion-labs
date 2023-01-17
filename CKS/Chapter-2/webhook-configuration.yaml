@@ -18,7 +18,7 @@ webhooks:
     clientConfig:
       caBundle: $(cat ca.crt | base64 | tr -d '\n')
       service:
-        namespace: opa
+        namespace: default
         name: opa
     admissionReviewVersions: ["v1"]
     sideEffects: None
