@@ -5,7 +5,6 @@ metadata:
 spec:
   template:
     spec:
-      serviceAccountName: resource-manager
       containers:
       - name: internal-kubectl
         image: markofmadness/internal-kubectl:1.0
