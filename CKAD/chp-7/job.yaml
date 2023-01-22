@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: internal-kubectl
+spec:
+  template:
+    spec:
+      serviceAccountName: resource-manager
+      containers:
+      - name: internal-kubectl
+        image: markofmadness/internal-kubectl:1.0
+        command: ["/bin/sh", "-c", "kubectl get po"]
+      restartPolicy: Never
+  backoffLimit: 4
