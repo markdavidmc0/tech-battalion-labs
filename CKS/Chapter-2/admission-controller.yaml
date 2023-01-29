@@ -17,7 +17,7 @@ subjects:
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  namespace: default
+  namespace: opa
   name: configmap-modifier
 rules:
 - apiGroups: [""]
@@ -28,7 +28,7 @@ rules:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  namespace: default
+  namespace: opa
   name: opa-configmap-modifier
 roleRef:
   kind: Role
@@ -43,7 +43,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: opa
-  namespace: default
+  namespace: opa
 spec:
   selector:
     app: opa
@@ -58,7 +58,7 @@ kind: Deployment
 metadata:
   labels:
     app: opa
-  namespace: default
+  namespace: opa
   name: opa
 spec:
   replicas: 1
