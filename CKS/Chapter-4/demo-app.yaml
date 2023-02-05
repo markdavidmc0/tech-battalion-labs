@@ -1,0 +1,62 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rick
+  labels:
+    app: rick
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rick
+  template:
+    metadata:
+      labels:
+        app: rick
+    spec:
+      containers:
+      - name: rick-container
+        image: docker.io/byrnedo/alpine-curl:0.1.8
+        imagePullPolicy: IfNotPresent
+        command: [ "/bin/ash", "-c", "sleep 1000000000" ]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: morty
+  labels:
+    app: morty
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: morty
+  template:
+    metadata:
+      labels:
+        app: morty
+    spec:
+      containers:
+      - name: morty-container
+        env:
+        - name: PORT
+          value: "8080"
+        ports:
+        - containerPort: 8080
+        image: docker.io/cilium/json-mock:1.2
+        imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: morty
+  labels:
+    app: morty
+spec:
+  type: ClusterIP
+  selector:
+    app: morty
+  ports:
+  - name: http
+    port: 8080
