@@ -1,0 +1,10 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: morty-ingress-deny
+spec:
+  podSelector:
+    matchLabels:
+      app: morty
+  policyTypes:
+  - Ingress
