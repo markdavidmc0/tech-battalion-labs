@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app-immutable
+  labels:
+    app: test-app-immutable
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-app-immutable
+  template:
+    metadata:
+      labels:
+        app: test-app-immutable
+    spec:
+      containers:
+      - name: my-container-immutable
+        image: docker.io/byrnedo/alpine-curl:0.1.8
+        imagePullPolicy: IfNotPresent
+        command: [ "/bin/ash", "-c", "sleep 1000000000" ]
+        securityContext:
+          readOnlyRootFilesystem: true
