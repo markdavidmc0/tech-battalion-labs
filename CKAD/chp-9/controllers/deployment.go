@@ -11,7 +11,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 
-	mydomainv1alpha1 "resource-manager-operator/api/v1alpha1"
+	mydomainv1alpha1 "resource-manager/api/v1alpha1"
 )
 
 func labels(v *mydomainv1alpha1.ResourceManager, tier string) map[string]string {

@@ -12,7 +12,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 
-	mydomainv1alpha1 "resource-manager-operator/api/v1alpha1"
+	mydomainv1alpha1 "resource-manager/api/v1alpha1"
 )
 
 // ResourceManagerReconciler reconciles a ResourceManager object
