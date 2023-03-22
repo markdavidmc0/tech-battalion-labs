@@ -11,7 +11,7 @@ resource "google_compute_instance" "vm_production" {
   name         = "terraform-instance"
   machine_type = "f1-micro"
   zone         = var.zone
- 
+  allow_stopping_for_update = true
 
   boot_disk {
     initialize_params {
